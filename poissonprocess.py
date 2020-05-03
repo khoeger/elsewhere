@@ -52,5 +52,39 @@ Law, Pg. 473
         2. Return t_i = t_i-1 - (1/lambda)* ln U
 
 """
-
 import random
+from scipy.stats import uniform
+import numpy
+
+# seed
+numpy.random.seed(1234567890)
+
+# Constants
+endT = 71 #number of iterations <- This is less than 60
+lam = 1 # 1 event per second
+
+incidences = []
+
+def printPoissonArrivals(t, lam):
+    # generate u
+    u = uniform.rvs(size=1)[0]
+    # constant
+    sub = (1/lam)*  numpy.log(u)
+
+    # Base case
+    if t == 0:
+        return(-1*sub)
+
+    # extrapolation
+    else:
+        x= printPoissonArrivals( (t-1), lam) - sub
+        #print(x)
+        incidences.append(x)
+
+        return( x )
+
+printPoissonArrivals(endT, lam)
+
+
+print(incidences[-1])
+print("\n\n",incidences)
