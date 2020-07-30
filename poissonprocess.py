@@ -57,11 +57,11 @@ from scipy.stats import uniform
 import numpy
 
 # seed
-numpy.random.seed(1234567890)
+numpy.random.seed(2020050703)
 
 # Constants
-endT = 71 #number of iterations <- This is less than 60
-lam = 1 # 1 event per second
+endT = 144 #number of iterations <- This is less than 60
+lam = 2 # 1 event per second
 
 incidences = []
 
